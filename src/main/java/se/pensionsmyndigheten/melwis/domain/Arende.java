@@ -9,20 +9,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "Arende")
+@Document(collection = "Arenden")
 @Data
 @Builder
 @ToString(exclude = {"personNummer", "handlingsNummers"})
 @AllArgsConstructor
 @NoArgsConstructor
 public class Arende {
-  @Id
-  private long id;
-
   @DBRef
   Person person;
 
-  @Indexed(unique = true)
+  @Id
   private String arendeNummer;
 
   @DBRef
@@ -33,4 +30,8 @@ public class Arende {
 
   @Transient
   private List<String> handlingsNummers;
+
+  private Status status;
+
+  private Steg steg;
 }

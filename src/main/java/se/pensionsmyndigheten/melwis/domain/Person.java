@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,19 +14,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.util.List;
 
-@Document(collection = "Person")
+@Document(collection = "Persons")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person {
-  @Id
-  private long id;
-
   @Indexed(unique = true)
   private String personNummer;
 
-  @Indexed(unique = true)
+  @Id
   private String kundNummer;
 
   private LocalDate dob;
@@ -35,11 +34,12 @@ public class Person {
 
   private String lastName;
 
-  @DBRef
-  List<Person> efterlevande;
+  @DBRef List<Person> efterlevande;
 
-  @DBRef
-  Person partner;
+
+  @DBRef @Indexed(unique = true) Person partner;
+
+  @Transient private String partnerPersonNummer;
 
   Civilstand civilstand;
 }

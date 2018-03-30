@@ -27,35 +27,6 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>ah-external</id>
-			<url>http://mavena.ppm.nu:8081/nexus/content/repositories/ah-external</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>ah-snapshots</id>
-			<url>http://mavena.ppm.nu:8081/nexus/content/repositories/ah-snapshots</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-		</repository>
-
-		<repository>
-			<id>thirdparty</id>
-			<url>http://mavena.ppm.nu:8081/nexus/content/repositories/thirdparty</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
 	</repositories>
 
 	<dependencies>
