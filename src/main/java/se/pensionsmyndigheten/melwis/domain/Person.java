@@ -1,12 +1,7 @@
 package se.pensionsmyndigheten.melwis.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.*;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,7 +18,7 @@ public class Person {
   @Indexed(unique = true)
   private String personNummer;
 
-  @Id
+  @Id @NonNull
   private String kundNummer;
 
   private LocalDate dob;
@@ -36,10 +31,7 @@ public class Person {
 
   @DBRef List<Person> efterlevande;
 
-
   @DBRef @Indexed(unique = true) Person partner;
-
-  @Transient private String partnerPersonNummer;
 
   Civilstand civilstand;
 }

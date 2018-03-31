@@ -17,19 +17,13 @@ import java.util.List;
 @NoArgsConstructor
 public class Arende {
   @DBRef
-  Person person;
+  Person kund;
 
-  @Id
+  @Id @NonNull
   private String arendeNummer;
 
-  @DBRef
+  @DBRef @Indexed(unique = true) @Singular
   List<Handling> handlings;
-
-  @Transient
-  private String personNummer;
-
-  @Transient
-  private List<String> handlingsNummers;
 
   private Status status;
 
